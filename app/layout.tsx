@@ -20,9 +20,28 @@ export const metadata: Metadata = {
     telephone: false,
   },
   icons: {
-    icon: '/logo.png',
+    icon: [
+      { url: '/logo.png', sizes: '32x32', type: 'image/png' },
+      { url: '/logo.png', sizes: '16x16', type: 'image/png' }
+    ],
     shortcut: '/logo.png',
-    apple: '/logo.png',
+    apple: [
+      { url: '/logo.png', sizes: '180x180', type: 'image/png' }
+    ],
+    other: [
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '192x192',
+        url: '/logo.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png', 
+        sizes: '512x512',
+        url: '/logo.png',
+      }
+    ]
   },
   openGraph: {
     title: "GoalCraft – Boost Your Restaurant on Swiggy & Zomato",
@@ -57,6 +76,7 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({
@@ -66,6 +86,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" type="image/png" sizes="32x32" href="/logo.png?v=1" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/logo.png?v=1" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/logo.png?v=1" />
+        <link rel="shortcut icon" href="/logo.png?v=1" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#29bdb8" />
+      </head>
       <body className="antialiased">
         <Providers>
           {children}

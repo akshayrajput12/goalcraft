@@ -18,7 +18,7 @@ const MenuScoreSection = () => {
                     <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
                         Improve Your Menu Score, Improve Sales
                     </h2>
-                    <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-red-600 mx-auto rounded-full"></div>
+                    <div className="w-24 h-1 bg-[rgb(41,189,184)] mx-auto rounded-full"></div>
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
@@ -97,7 +97,7 @@ const MenuScoreSection = () => {
                     className="mt-16 text-center"
                 >
                     <Link href="/contact">
-                        <button className="px-10 py-4 bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer">
+                        <button className="px-10 py-4 bg-[rgb(41,189,184)] text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer">
                             Yes, I am Interested
                         </button>
                     </Link>

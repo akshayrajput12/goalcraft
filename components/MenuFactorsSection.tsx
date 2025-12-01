@@ -40,7 +40,7 @@ const MenuFactorsSection = () => {
                 >
                     <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                         Few Important Factors of Your Menu on <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600">Swiggy</span> & <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-pink-600">Zomato</span>
+                        <span className="text-red-500">Zomato</span> & <span className="text-orange-500">Swiggy</span>
                     </h2>
                     <div className="w-24 h-1 bg-gray-300 mx-auto rounded-full"></div>
                 </motion.div>

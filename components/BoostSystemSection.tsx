@@ -22,7 +22,7 @@ const features = [
 
 const BoostSystemSection = () => {
     return (
-        <section className="py-20 bg-[#0f172a] text-white">
+        <section className="py-20 bg-[rgb(11,30,63)] text-white">
             <div className="container mx-auto px-6 md:px-12 text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
@@ -67,7 +67,7 @@ const BoostSystemSection = () => {
                     transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
                 >
                     <Link href="/contact">
-                        <button className="px-10 py-4 bg-gradient-to-r from-yellow-600 to-red-600 text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ring-2 ring-offset-2 ring-offset-[#0f172a] ring-red-500 cursor-pointer">
+                        <button className="px-10 py-4 bg-[rgb(41,189,184)] text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ring-2 ring-offset-2 ring-offset-[rgb(11,30,63)] ring-cyan-500 cursor-pointer">
                             Yes, I am Interested
                         </button>
                     </Link>

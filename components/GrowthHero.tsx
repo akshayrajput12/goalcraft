@@ -25,7 +25,7 @@ const GrowthHero = () => {
                             className="text-4xl md:text-6xl font-bold text-foreground leading-tight mb-6"
                         >
                             Grow Your Sales on <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600">Swiggy</span> & <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-pink-600">Zomato</span>.
+                            <span className="text-red-500">Zomato</span> & <span className="text-orange-500">Swiggy</span>.
                             <br />
                             Fast and Easy.
                         </motion.h1>
@@ -46,7 +46,7 @@ const GrowthHero = () => {
                             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
                         >
                             <Link href="/contact">
-                                <button className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white transition-all duration-300 bg-gradient-to-r from-cyan-600 to-red-600 rounded-full hover:scale-105 hover:shadow-lg hover:shadow-red-500/30 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 cursor-pointer">
+                                <button className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white transition-all duration-300 bg-[rgb(41,189,184)] rounded-full hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/30 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 cursor-pointer">
                                     <span className="mr-2">Yes, I am Interested</span>
                                     <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
                                     <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

@@ -89,7 +89,7 @@ const ValuesSection = () => {
                     className="text-center"
                 >
                     <Link href="/contact">
-                        <button className="px-10 py-4 bg-gradient-to-r from-yellow-500 to-slate-800 text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer">
+                        <button className="px-10 py-4 bg-[rgb(41,189,184)] text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer">
                             Yes, I am Interested
                         </button>
                     </Link>
