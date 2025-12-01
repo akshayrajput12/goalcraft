@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle } from 'lucide-react';
+import Link from 'next/link';
 
 const features = [
     {
@@ -65,9 +66,11 @@ const BoostSystemSection = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
                 >
-                    <button className="px-10 py-4 bg-gradient-to-r from-yellow-600 to-red-600 text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ring-2 ring-offset-2 ring-offset-[#0f172a] ring-red-500">
-                        Yes, I am Interested
-                    </button>
+                    <Link href="/contact">
+                        <button className="px-10 py-4 bg-gradient-to-r from-yellow-600 to-red-600 text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 ring-2 ring-offset-2 ring-offset-[#0f172a] ring-red-500 cursor-pointer">
+                            Yes, I am Interested
+                        </button>
+                    </Link>
                 </motion.div>
             </div>
         </section>

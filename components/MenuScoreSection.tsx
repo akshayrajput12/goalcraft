@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const MenuScoreSection = () => {
     return (
@@ -82,4 +83,28 @@ const MenuScoreSection = () => {
                                 </div>
                             </div>
                         </div>
-                        export default MenuScoreSection;
+                        <p className="text-gray-600 text-center leading-relaxed max-w-md">
+                            After our menu redevelopment service the Zomato menu score went above 90%. Also, this brand sales went up drastically within a month.
+                        </p>
+                    </motion.div>
+                </div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+                    className="mt-16 text-center"
+                >
+                    <Link href="/contact">
+                        <button className="px-10 py-4 bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer">
+                            Yes, I am Interested
+                        </button>
+                    </Link>
+                </motion.div>
+            </div>
+        </section>
+    );
+};
+
+export default MenuScoreSection;
