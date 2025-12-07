@@ -30,7 +30,25 @@ export default function ContactForm() {
         setErrorMessage('');
 
         try {
-            const response = await fetch('/api/contact', {
+            // Prepare data for Netlify
+            const netlifyBody = new URLSearchParams({
+                'form-name': 'contact',
+                firstName: formData.firstName,
+                lastName: formData.lastName,
+                email: formData.email,
+                phone: formData.phone,
+                message: formData.message,
+            }).toString();
+
+            // Submit to Netlify
+            const netlifyPromise = fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: netlifyBody,
+            });
+
+            // Submit to internal API (Email)
+            const apiPromise = fetch('/api/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -38,8 +56,19 @@ export default function ContactForm() {
                 body: JSON.stringify(formData),
             });
 
-            if (response.ok) {
+            // Wait for both (or at least Netlify if that's the priority, but let's try both)
+            const [netlifyResponse, apiResponse] = await Promise.all([netlifyPromise, apiPromise]);
+
+            if (apiResponse.ok || netlifyResponse.ok) { // Consider success if at least one works, or check both
                 setStatus('success');
+
+                // WhatsApp Redirection
+                const whatsappMessage = `*New Contact Request*\n\n*Name:* ${formData.firstName} ${formData.lastName}\n*Email:* ${formData.email}\n*Phone:* ${formData.phone}\n*Message:* ${formData.message}`;
+                const whatsappUrl = `https://wa.me/919653814628?text=${encodeURIComponent(whatsappMessage)}`;
+
+                // Open WhatsApp in new tab
+                window.open(whatsappUrl, '_blank');
+
                 setFormData({
                     firstName: '',
                     lastName: '',
@@ -48,7 +77,7 @@ export default function ContactForm() {
                     message: ''
                 });
             } else {
-                const data = await response.json();
+                const data = await apiResponse.json();
                 setStatus('error');
                 setErrorMessage(data.message || 'Something went wrong. Please try again.');
             }
@@ -81,12 +110,14 @@ export default function ContactForm() {
                     </Button>
                 </div>
             ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6" name="contact" data-netlify="true">
+                    <input type="hidden" name="form-name" value="contact" />
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-2">
                             <label htmlFor="first-name" className="text-sm font-medium text-slate-700">First name</label>
                             <Input
                                 id="first-name"
+                                name="firstName"
                                 value={formData.firstName}
                                 onChange={handleChange}
                                 placeholder="John"
@@ -98,6 +129,7 @@ export default function ContactForm() {
                             <label htmlFor="last-name" className="text-sm font-medium text-slate-700">Last name</label>
                             <Input
                                 id="last-name"
+                                name="lastName"
                                 value={formData.lastName}
                                 onChange={handleChange}
                                 placeholder="Doe"
@@ -110,6 +142,7 @@ export default function ContactForm() {
                         <label htmlFor="email" className="text-sm font-medium text-slate-700">Email</label>
                         <Input
                             id="email"
+                            name="email"
                             type="email"
                             value={formData.email}
                             onChange={handleChange}
@@ -122,6 +155,7 @@ export default function ContactForm() {
                         <label htmlFor="phone" className="text-sm font-medium text-slate-700">Phone (Optional)</label>
                         <Input
                             id="phone"
+                            name="phone"
                             type="tel"
                             value={formData.phone}
                             onChange={handleChange}
@@ -133,6 +167,7 @@ export default function ContactForm() {
                         <label htmlFor="message" className="text-sm font-medium text-slate-700">Message</label>
                         <Textarea
                             id="message"
+                            name="message"
                             value={formData.message}
                             onChange={handleChange}
                             placeholder="Tell us about your restaurant and how we can help..."
